@@ -27,6 +27,22 @@ if (contactForm) {
     });
 }
 
+// Navbar transparency handling
+document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('header');
+    const nav = document.querySelector('nav');
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+            nav.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+            nav.classList.remove('scrolled');
+        }
+    });
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('dots-canvas');
     const ctx = canvas.getContext('2d');
@@ -191,3 +207,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     animate();
 }); 
+

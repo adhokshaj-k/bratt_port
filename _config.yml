@@ -1,8 +1,41 @@
-title: Bratt's
-description: Personal website of Adhokshaj Kulkarni (Bratt)
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-baseurl: "" # the subpath of your site, e.g. /blog
-permalink: /blog/:title/
+title: BRATT's Portfolio
+description: "Hacker | Developer | Freelancer - Cybersecurity enthusiast and CTF player. Explore my projects, blog posts, and get in touch!"
+url: "https://brattsec.com" # Replace with your actual domain
+baseurl: ""
+permalink: /blog/:year/:month/:day/:title/
+
+# SEO Settings
+author:
+  name: "Adhokshaj Kulkarni"
+  email: "adhokshajk05@gmail.com"
+  description: "Cybersecurity enthusiast and CTF player"
+  social:
+    github: "adhokshaj-k"
+    linkedin: "adhokshaj-kulkarni-22931a1b4"
+    twitter: "" # Add if you have one
+
+# SEO Meta Tags
+default_meta:
+  title: "BRATT's Portfolio - Hacker | Developer | Freelancer"
+  description: "Cybersecurity enthusiast and CTF player. Explore my projects, blog posts, and get in touch!"
+  keywords: "cybersecurity, CTF, hacking, development, portfolio, freelancer, Adhokshaj Kulkarni"
+  author: "Adhokshaj Kulkarni"
+  robots: "index, follow"
+  og:
+    title: "BRATT's Portfolio"
+    description: "Cybersecurity enthusiast and CTF player. Explore my projects, blog posts, and get in touch!"
+    type: "website"
+    image: "/asset/img/og-image.jpg" # Add an Open Graph image
+  twitter:
+    card: "summary_large_image"
+    title: "BRATT's Portfolio"
+    description: "Cybersecurity enthusiast and CTF player. Explore my projects, blog posts, and get in touch!"
+    image: "/asset/img/twitter-image.jpg" # Add a Twitter card image
+
+# Sitemap Settings
+sitemap:
+  changefreq: "weekly"
+  priority: 0.8
 
 # Build settings
 markdown: kramdown
@@ -26,12 +59,12 @@ defaults:
       type: "posts"
     values:
       layout: "post"
-      permalink: /blog/:title/
+      permalink: /blog/:year/:month/:day/:title/
 
 collections:
   posts:
     output: true
-    permalink: /blog/:title/
+    permalink: /blog/:year/:month/:day/:title/
 
 exclude:
   - .git/
@@ -43,4 +76,5 @@ exclude:
   - vendor/bundle/
   - vendor/cache/
   - vendor/gems/
-  - vendor/ruby/ 
+  - vendor/ruby/
+  - .gitignore 

@@ -3,11 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
     <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+    <meta name="title" content="{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}">
+    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    <meta name="keywords" content="{% if page.keywords %}{{ page.keywords }}{% else %}{{ site.default_meta.keywords }}{% endif %}">
+    <meta name="author" content="{{ site.author.name }}">
+    <meta name="robots" content="{% if page.robots %}{{ page.robots }}{% else %}{{ site.default_meta.robots }}{% endif %}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+    <meta property="og:title" content="{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}">
+    <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    <meta property="og:image" content="{{ site.url }}{{ site.default_meta.og.image }}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ site.url }}{{ page.url }}">
+    <meta property="twitter:title" content="{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}">
+    <meta property="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    <meta property="twitter:image" content="{{ site.url }}{{ site.default_meta.twitter.image }}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ '/asset/img/favicon1.png' | relative_url }}">
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="{{ '/asset/css/styles.css' | relative_url }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="{{ '/asset/img/favicon1.png' | relative_url }}">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "{{ site.author.name }}",
+        "url": "{{ site.url }}",
+        "sameAs": [
+            "https://github.com/{{ site.author.social.github }}",
+            "https://linkedin.com/in/{{ site.author.social.linkedin }}"
+        ],
+        "jobTitle": "Cybersecurity Enthusiast",
+        "description": "{{ site.author.description }}"
+    }
+    </script>
+
     {% if page.additional_css %}
     {% for css_file in page.additional_css %}
     <link rel="stylesheet" href="{{ css_file }}">
@@ -35,8 +77,8 @@
     </header>
 
     <div class="social-links">
-        <a href="https://github.com/adhokshaj-k" target="_blank" title="GitHub"><img src="{{ '/asset/img/gh_logo.png' | relative_url }}" alt="GitHub"></a>
-        <a href="https://www.linkedin.com/in/adhokshaj-kulkarni-22931a1b4/" target="_blank" title="LinkedIn"><img src="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg" alt="LinkedIn"></a>
+        <a href="https://github.com/{{ site.author.social.github }}" target="_blank" title="GitHub"><img src="{{ '/asset/img/gh_logo.png' | relative_url }}" alt="GitHub"></a>
+        <a href="https://www.linkedin.com/in/{{ site.author.social.linkedin }}/" target="_blank" title="LinkedIn"><img src="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg" alt="LinkedIn"></a>
         <a href="https://app.hackthebox.com/profile/2177643" target="_blank" title="HackTheBox"><img src="{{ '/asset/img/htb_logo.jpeg' | relative_url }}" alt="HackTheBox"></a>
         <a href="https://tryhackme.com/p/brattt" target="_blank" title="TryHackMe"><img src="https://tryhackme.com/img/favicon.png" alt="TryHackMe"></a>
     </div>

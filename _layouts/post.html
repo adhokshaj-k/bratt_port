@@ -63,4 +63,52 @@ additional_js:
             hljs.highlightBlock(block);
         });
     });
-</script> 
+</script>
+
+<article class="blog-markdown-content">
+    <header>
+        <h1>{{ page.title }}</h1>
+        <div class="blog-meta">
+            <span class="date">{{ page.date | date: "%B %d, %Y" }}</span>
+            {% if page.author %}
+            <span class="author">By {{ page.author }}</span>
+            {% endif %}
+            {% if page.categories %}
+            <span class="category">{{ page.categories | join: ", " }}</span>
+            {% endif %}
+        </div>
+    </header>
+
+    <div class="post-content">
+        {{ content }}
+    </div>
+
+    {% if page.tags %}
+    <div class="post-tags">
+        Tags: 
+        {% for tag in page.tags %}
+        <span class="tag">{{ tag }}</span>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Structured Data for Blog Post -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "{{ page.title }}",
+        "datePublished": "{{ page.date | date_to_xmlschema }}",
+        "dateModified": "{{ page.last_modified_at | date_to_xmlschema | default: page.date | date_to_xmlschema }}",
+        "author": {
+            "@type": "Person",
+            "name": "{{ page.author | default: site.author.name }}"
+        },
+        "publisher": {
+            "@type": "Person",
+            "name": "{{ site.author.name }}"
+        },
+        "description": "{{ page.description | default: page.excerpt | strip_html | truncate: 160 }}"
+    }
+    </script>
+</article> 
