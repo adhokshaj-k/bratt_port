@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('/blogs/blog_index.json')
+    fetch('../blogs/blog_index.json')
         .then(response => response.json())
         .then(blogPosts => {
             const blogList = document.querySelector('.blog ul');
