@@ -158,5 +158,8 @@ DEPENDENCIES
   wdm (~> 0.1.1)
   webrick (~> 1.8)
 
+RUBY VERSION
+   ruby 3.3.7p123
+
 BUNDLED WITH
    2.6.7
