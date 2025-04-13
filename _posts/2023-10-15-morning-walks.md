@@ -17,7 +17,7 @@ Morning air is fresh, and your mind is clearer. It's like a natural caffeine hit
 - Reduces stress
 - Gives you time to plan your day
 
-![Thinking clearly](https://images.unsplash.com/photo-1550534791-ef7f14b4f3c7?auto=format&fit=crop&w=1050&q=80)
+![Thinking clearly](https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=1050&q=80)
 
 ## 🏃 Health Gains
 

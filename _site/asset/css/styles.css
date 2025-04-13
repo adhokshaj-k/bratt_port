@@ -142,7 +142,7 @@ nav {
 /* Page Header */
 .page-header {
     padding: 8rem 2rem 4rem;
-    text-align: center;
+    /* text-align: center; */
     background-color: var(--secondary-color);
 }
 
@@ -765,16 +765,19 @@ footer {
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     color: var(--text-color);
+    text-align: left;
 }
 
 .blog-markdown-content h1, .blog-markdown-content h2, .blog-markdown-content h3 {
     margin-top: 1.5rem;
     color: var(--accent-color);
+    text-align: left;
 }
 
 .blog-markdown-content p, .blog-markdown-content li {
     margin-bottom: 1rem;
     line-height: 1.8;
+    text-align: left;
 }
 
 .blog-markdown-content pre {

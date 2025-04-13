@@ -21,6 +21,9 @@ title: Blog
 </section>
 
 <style>
+    h1{
+        text-align:center;
+    }
     .blog ul {
         list-style: none;
         padding: 0;

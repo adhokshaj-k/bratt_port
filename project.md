@@ -4,8 +4,8 @@ title: My Work
 ---
 
 <section class="page-header">
-    <h1>My Projects</h1>
-    <p>A collection of my work and experiments</p>
+    <h1 style="text-align: center;">My Work</h1>
+    <!-- <p>A collection of my work and experiments</p> -->
 </section>
 
 <section class="projects">
