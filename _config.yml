@@ -1,0 +1,46 @@
+title: Bratt's
+description: Personal website of Adhokshaj Kulkarni (Bratt)
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # the subpath of your site, e.g. /blog
+permalink: /blog/:title/
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Process all HTML files as Jekyll templates
+include: ["*.html"]
+
+# Make Jekyll process these HTML files
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+  - scope:
+      path: "*.html"
+    values:
+      layout: default
+  - scope:
+      path: "_posts"
+      type: "posts"
+    values:
+      layout: "post"
+      permalink: /blog/:title/
+
+collections:
+  posts:
+    output: true
+    permalink: /blog/:title/
+
+exclude:
+  - .git/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/ 

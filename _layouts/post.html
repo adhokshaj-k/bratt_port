@@ -1,0 +1,66 @@
+---
+layout: default
+additional_css:
+  - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css
+additional_js:
+  - https://cdn.jsdelivr.net/npm/marked/marked.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js
+---
+
+<section class="page-header">
+    <a href="{{ '/blog' | relative_url }}" class="back-link">← Back to Blog</a>
+    <div class="blog-post">
+        {{ content }}
+    </div>
+</section>
+
+<style>
+    .blog-post {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+        background: #000000;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .blog-post img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 1rem 0;
+    }
+    
+    .blog-post pre {
+        background:black;
+        padding: 1rem;
+        border-radius: 8px;
+        overflow-x: auto;
+    }
+    
+    .blog-post code {
+        background: #000000;
+        padding: 0.2rem 0.4rem;
+        border-radius: 4px;
+        font-family: monospace;
+    }
+    
+    .back-link {
+        display: inline-block;
+        margin-bottom: 2rem;
+        color: #333;
+        text-decoration: none;
+    }
+    
+    .back-link:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre code').forEach((block) => {
+            hljs.highlightBlock(block);
+        });
+    });
+</script> 

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+    <link rel="stylesheet" href="{{ '/asset/css/styles.css' | relative_url }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{{ '/asset/img/favicon1.png' | relative_url }}">
+    {% if page.additional_css %}
+    {% for css_file in page.additional_css %}
+    <link rel="stylesheet" href="{{ css_file }}">
+    {% endfor %}
+    {% endif %}
+    {% if page.custom_css %}
+    <style>
+    /* Custom CSS from page frontmatter */
+    </style>
+    {% endif %}
+</head>
+<body>
+    <header>
+        <nav class="transparent">
+            <img src="{{ '/asset/img/logo_web.png' | relative_url }}" alt="logo_web" height="30px" width="35px">
+            <div class="logo">Bratt's</div>
+            <ul class="nav-links">
+                <li><a href="{{ '/' | relative_url }}">Home</a></li>
+                <li><a href="{{ '/project' | relative_url }}">My Work</a></li>
+                <li><a href="{{ '/blog' | relative_url }}">Blog</a></li>
+                <li><a href="{{ '/#about' | relative_url }}">About</a></li>
+                <li><a href="{{ '/#contact' | relative_url }}">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="social-links">
+        <a href="https://github.com/adhokshaj-k" target="_blank" title="GitHub"><img src="{{ '/asset/img/gh_logo.png' | relative_url }}" alt="GitHub"></a>
+        <a href="https://www.linkedin.com/in/adhokshaj-kulkarni-22931a1b4/" target="_blank" title="LinkedIn"><img src="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg" alt="LinkedIn"></a>
+        <a href="https://app.hackthebox.com/profile/2177643" target="_blank" title="HackTheBox"><img src="{{ '/asset/img/htb_logo.jpeg' | relative_url }}" alt="HackTheBox"></a>
+        <a href="https://tryhackme.com/p/brattt" target="_blank" title="TryHackMe"><img src="https://tryhackme.com/img/favicon.png" alt="TryHackMe"></a>
+    </div>
+
+    <main>
+        {{ content }}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 BrattSec. All rights reserved.</p>
+    </footer>
+
+    <script src="{{ '/asset/js/script.js' | relative_url }}"></script>
+    {% if page.additional_js %}
+    {% for js_file in page.additional_js %}
+    <script src="{{ js_file }}"></script>
+    {% endfor %}
+    {% endif %}
+    {% if page.custom_js %}
+    <script>
+    // Custom JavaScript from page frontmatter
+    </script>
+    {% endif %}
+</body>
+</html> 
