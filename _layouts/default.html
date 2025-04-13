@@ -66,6 +66,9 @@
         <nav class="transparent">
             <img src="{{ '/asset/img/logo_web.png' | relative_url }}" alt="logo_web" height="30px" width="35px">
             <div class="logo">Bratt's</div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
             <ul class="nav-links">
                 <li><a href="{{ '/' | relative_url }}">Home</a></li>
                 <li><a href="{{ '/project' | relative_url }}">My Work</a></li>
@@ -75,6 +78,23 @@
             </ul>
         </nav>
     </header>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav">
+        <div class="mobile-nav-header">
+            <img src="{{ '/asset/img/logo_web.png' | relative_url }}" alt="logo_web" height="30px" width="35px">
+            <button class="close-menu-btn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="{{ '/' | relative_url }}">Home</a></li>
+            <li><a href="{{ '/project' | relative_url }}">My Work</a></li>
+            <li><a href="{{ '/blog' | relative_url }}">Blog</a></li>
+            <li><a href="{{ '/#about' | relative_url }}">About</a></li>
+            <li><a href="{{ '/#contact' | relative_url }}">Contact</a></li>
+        </ul>
+    </div>
 
     <div class="social-links">
         <a href="https://github.com/{{ site.author.social.github }}" target="_blank" title="GitHub"><img src="{{ '/asset/img/gh_logo.png' | relative_url }}" alt="GitHub"></a>

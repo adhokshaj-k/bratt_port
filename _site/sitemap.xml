@@ -4,7 +4,7 @@
     
     <url>
       <loc>http://localhost:4000/blog/</loc>
-      <lastmod>2025-04-13T21:04:41+05:30</lastmod>
+      <lastmod>2025-04-13T21:10:25+05:30</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>
     </url>
@@ -13,7 +13,7 @@
     
     <url>
       <loc>http://localhost:4000/</loc>
-      <lastmod>2025-04-13T21:04:41+05:30</lastmod>
+      <lastmod>2025-04-13T21:10:25+05:30</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>
     </url>
@@ -22,7 +22,7 @@
     
     <url>
       <loc>http://localhost:4000/</loc>
-      <lastmod>2025-04-13T21:04:41+05:30</lastmod>
+      <lastmod>2025-04-13T21:10:25+05:30</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>
     </url>
@@ -31,7 +31,7 @@
     
     <url>
       <loc>http://localhost:4000/project/</loc>
-      <lastmod>2025-04-13T21:04:41+05:30</lastmod>
+      <lastmod>2025-04-13T21:10:25+05:30</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>
     </url>
@@ -40,7 +40,7 @@
     
     <url>
       <loc>http://localhost:4000/project/</loc>
-      <lastmod>2025-04-13T21:04:41+05:30</lastmod>
+      <lastmod>2025-04-13T21:10:25+05:30</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>
     </url>
@@ -49,7 +49,7 @@
     
     <url>
       <loc>http://localhost:4000/robots.txt</loc>
-      <lastmod>2025-04-13T21:04:41+05:30</lastmod>
+      <lastmod>2025-04-13T21:10:25+05:30</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>
     </url>
@@ -58,7 +58,7 @@
     
     <url>
       <loc>http://localhost:4000/sitemap.xml</loc>
-      <lastmod>2025-04-13T21:04:41+05:30</lastmod>
+      <lastmod>2025-04-13T21:10:25+05:30</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>
     </url>
@@ -67,7 +67,7 @@
     
     <url>
       <loc>http://localhost:4000/feed.xml</loc>
-      <lastmod>2025-04-13T21:04:41+05:30</lastmod>
+      <lastmod>2025-04-13T21:10:25+05:30</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>
     </url>
@@ -76,21 +76,21 @@
   
   
     <url>
-      <loc>http://localhost:4000/blog/cybersecurity-trends/</loc>
+      <loc>http://localhost:4000/blog/2023/11/10/cybersecurity-trends/</loc>
       <lastmod>2023-11-10T00:00:00+05:30</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.6</priority>
     </url>
   
     <url>
-      <loc>http://localhost:4000/blog/morning-walks/</loc>
+      <loc>http://localhost:4000/blog/2023/10/15/morning-walks/</loc>
       <lastmod>2023-10-15T00:00:00+05:30</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.6</priority>
     </url>
   
     <url>
-      <loc>http://localhost:4000/blog/morning-walks-copy/</loc>
+      <loc>http://localhost:4000/blog/2023/10/15/morning-walks-copy/</loc>
       <lastmod>2023-10-15T00:00:00+05:30</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.6</priority>
